@@ -33,7 +33,7 @@ class exClass {
     constructor(){
         console.log('constructor initiated')
     }
-    // DECORATOR_COMPOSITION [first(secound(x)) (f . g)(x) just like function composition in mathematics ]
+    // DECORATOR_COMPOSITION [first(secound(sealed(x))) (f . g)(x) just like function composition in mathematics ]
     @first("holla")
     @second("Hiyo")
     @sealed
