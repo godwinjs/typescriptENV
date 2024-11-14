@@ -2,6 +2,7 @@
 function sealed(target: any, propertyKey:string, descriptor:PropertyDescriptor) {
     // do something with 'target' ...
     const realFunction = descriptor.value;
+    console.log('realFunction', `${realFunction}`)
 
     descriptor.value = function( ...args: any[] ){
         // the first argument to the realMethod
@@ -12,7 +13,7 @@ function sealed(target: any, propertyKey:string, descriptor:PropertyDescriptor) 
     }
 
     console.log(propertyKey, 'propertyKey')
-    console.log("I'm sealed", target, `${descriptor.value}`)
+    console.log("I'm sealed", target, descriptor)
 }
 
 //2. DECORATOR_FACTORIES @color('red') -> function decorator factories: function that returns a function decorator factory 
@@ -59,6 +60,10 @@ class exClass {
 
     print( str: string[]) {
         console.log(str)
+    }
+    @sealed
+    method() {
+        console.log('another method')
     }
 }
 

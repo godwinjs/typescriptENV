@@ -8,16 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 //1. DECORATORS @sealed -> function decorator: is a function with target as argument
 function sealed(target, propertyKey, descriptor) {
     // do something with 'target' ...
-    const realMethod = descriptor.value;
+    const realFunction = descriptor.value;
+    console.log('realFunction', `${realFunction}`);
     descriptor.value = function (...args) {
         // the first argument to the realMethod
         const [arg] = args;
         const argJoined = arg.join('');
         // why use apply instead of call?
-        realMethod.apply(this, [argJoined]);
+        realFunction.apply(this, [argJoined]);
     };
     console.log(propertyKey, 'propertyKey');
-    console.log("I'm sealed", target, `${descriptor.value}`);
+    console.log("I'm sealed", target, descriptor);
 }
 //2. DECORATOR_FACTORIES @color('red') -> function decorator factories: function that returns a function decorator factory 
 function color(value) {
@@ -59,6 +60,9 @@ class exClass {
     print(str) {
         console.log(str);
     }
+    method() {
+        console.log('another method');
+    }
 }
 __decorate([
     sealed
@@ -71,6 +75,9 @@ __decorate([
         first(): called: holla
     */
 ], exClass.prototype, "print", null);
+__decorate([
+    sealed
+], exClass.prototype, "method", null);
 const stringManager = new exClass();
 stringManager.print(['h', 'e']);
 //4. DECORATION_EVALUATION
