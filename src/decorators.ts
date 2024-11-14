@@ -36,6 +36,15 @@ class exClass {
     @first("holla")
     @second("Hiyo")
     @sealed
+    /*
+    Execution Order:
+        first(): factory evaluated: holla
+        secound(): factory evaluated: Hiyo
+        I'm sealed {}
+        second(): called: Hiyo
+        first(): called: holla
+    
+    */
 
     method() {
         console.log("initiated method.")
