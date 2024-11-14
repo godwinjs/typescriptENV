@@ -43,7 +43,6 @@ class exClass {
         I'm sealed {}
         second(): called: Hiyo
         first(): called: holla
-    
     */
 
     method() {
