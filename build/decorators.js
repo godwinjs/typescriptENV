@@ -5,12 +5,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-// @sealed -> function decorator: is a function with target as argument
+//1. DECORATORS @sealed -> function decorator: is a function with target as argument
 function sealed(target, propertyKey, descriptor) {
     // do something with 'target' ...
     console.log("I'm sealed", target);
 }
-// @color('red') -> function decorator factories: function that returns a function decorator factory 
+//2. DECORATOR_FACTORIES @color('red') -> function decorator factories: function that returns a function decorator factory 
 function color(value) {
     // this is the decorator factory, it sets up
     // the returned decorator function
@@ -36,6 +36,15 @@ class exClass {
     constructor() {
         console.log('constructor initiated');
     }
+    //3. DECORATOR_COMPOSITION [first(secound(sealed(x))) (f . g)(x) just like function composition in mathematics ]
+    /*
+    Execution Order:
+        first(): factory evaluated: holla
+        secound(): factory evaluated: Hiyo
+        I'm sealed {}
+        second(): called: Hiyo
+        first(): called: holla
+    */
     method() {
         console.log("initiated method.");
     }
@@ -44,4 +53,13 @@ __decorate([
     first("holla"),
     second("Hiyo"),
     sealed
+    /*
+    Execution Order:
+        first(): factory evaluated: holla
+        secound(): factory evaluated: Hiyo
+        I'm sealed {}
+        second(): called: Hiyo
+        first(): called: holla
+    */
 ], exClass.prototype, "method", null);
+//4. DECORATION_EVALUATION
