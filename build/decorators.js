@@ -8,7 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 //1. DECORATORS @sealed -> function decorator: is a function with target as argument
 function sealed(target, propertyKey, descriptor) {
     // do something with 'target' ...
-    console.log("I'm sealed", target);
+    const realMethod = descriptor.value;
+    descriptor.value = function (...args) {
+        // the first argument to the realMethod
+        const [arg] = args;
+        const argJoined = arg.join('');
+        // why use apply instead of call?
+        realMethod.apply(this, [argJoined]);
+    };
+    console.log(propertyKey, 'propertyKey');
+    console.log("I'm sealed", target, `${descriptor.value}`);
 }
 //2. DECORATOR_FACTORIES @color('red') -> function decorator factories: function that returns a function decorator factory 
 function color(value) {
@@ -37,6 +46,8 @@ class exClass {
         console.log('constructor initiated');
     }
     //3. DECORATOR_COMPOSITION [first(secound(sealed(x))) (f . g)(x) just like function composition in mathematics ]
+    // @first("holla")
+    // @second("Hiyo")
     /*
     Execution Order:
         first(): factory evaluated: holla
@@ -45,13 +56,11 @@ class exClass {
         second(): called: Hiyo
         first(): called: holla
     */
-    method() {
-        console.log("initiated method.");
+    print(str) {
+        console.log(str);
     }
 }
 __decorate([
-    first("holla"),
-    second("Hiyo"),
     sealed
     /*
     Execution Order:
@@ -61,5 +70,7 @@ __decorate([
         second(): called: Hiyo
         first(): called: holla
     */
-], exClass.prototype, "method", null);
+], exClass.prototype, "print", null);
+const stringManager = new exClass();
+stringManager.print(['h', 'e']);
 //4. DECORATION_EVALUATION

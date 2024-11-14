@@ -13,3 +13,5 @@ app.get('/', ( req: Request, res: Response ) => {
 app.listen(port, () => {
     console.log('server listening on port: ' + port)
 })
+
+// https://www.bing.com/videos/riverview/relatedvideo?q=decorators%20in%20typescript&mid=73D1F5A40CEF35F9EA6A73D1F5A40CEF35F9EA6A&ajaxhist=0

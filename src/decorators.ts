@@ -1,7 +1,18 @@
 //1. DECORATORS @sealed -> function decorator: is a function with target as argument
 function sealed(target: any, propertyKey:string, descriptor:PropertyDescriptor) {
     // do something with 'target' ...
-    console.log("I'm sealed", target)
+    const realFunction = descriptor.value;
+
+    descriptor.value = function( ...args: any[] ){
+        // the first argument to the realMethod
+        const [arg] = args;
+        const argJoined = arg.join('')
+        // why use apply instead of call?
+        realFunction.apply(this, [argJoined])
+    }
+
+    console.log(propertyKey, 'propertyKey')
+    console.log("I'm sealed", target, `${descriptor.value}`)
 }
 
 //2. DECORATOR_FACTORIES @color('red') -> function decorator factories: function that returns a function decorator factory 
@@ -34,8 +45,8 @@ class exClass {
         console.log('constructor initiated')
     }
     //3. DECORATOR_COMPOSITION [first(secound(sealed(x))) (f . g)(x) just like function composition in mathematics ]
-    @first("holla")
-    @second("Hiyo")
+    // @first("holla")
+    // @second("Hiyo")
     @sealed
     /*
     Execution Order:
@@ -46,8 +57,11 @@ class exClass {
         first(): called: holla
     */
 
-    method() {
-        console.log("initiated method.")
+    print( str: string[]) {
+        console.log(str)
     }
 }
+
+const stringManager = new exClass();
+stringManager.print(['h', 'e'])
 //4. DECORATION_EVALUATION
