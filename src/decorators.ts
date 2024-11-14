@@ -1,10 +1,10 @@
-//DECORATORS @sealed -> function decorator: is a function with target as argument
+//1. DECORATORS @sealed -> function decorator: is a function with target as argument
 function sealed(target: any, propertyKey:string, descriptor:PropertyDescriptor) {
     // do something with 'target' ...
     console.log("I'm sealed", target)
 }
 
-//DECORATOR_FACTORIES @color('red') -> function decorator factories: function that returns a function decorator factory 
+//2. DECORATOR_FACTORIES @color('red') -> function decorator factories: function that returns a function decorator factory 
 function color(value: string) {
     // this is the decorator factory, it sets up
     // the returned decorator function
@@ -33,7 +33,7 @@ class exClass {
     constructor(){
         console.log('constructor initiated')
     }
-    // DECORATOR_COMPOSITION [first(secound(sealed(x))) (f . g)(x) just like function composition in mathematics ]
+    //3. DECORATOR_COMPOSITION [first(secound(sealed(x))) (f . g)(x) just like function composition in mathematics ]
     @first("holla")
     @second("Hiyo")
     @sealed
@@ -50,3 +50,4 @@ class exClass {
         console.log("initiated method.")
     }
 }
+//4. DECORATION_EVALUATION
