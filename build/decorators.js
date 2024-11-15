@@ -78,6 +78,6 @@ __decorate([
 __decorate([
     sealed
 ], exClass.prototype, "method", null);
-const stringManager = new exClass();
-stringManager.print(['h', 'e']);
+const string = new exClass();
+string.print(['h', 'e']);
 //4. DECORATION_EVALUATION
