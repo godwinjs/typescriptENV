@@ -42,3 +42,9 @@ app.listen(port, () => {
 // ReactJS Tutorial - 23 - Component Mounting Lifecycle Methods: https://www.youtube.com/watch?v=KDXZibVdiEI&t=13s
 // laz javascript int: https://www.youtube.com/watch?v=8eRVxE9PEF0&t=561s
 // faizal snr backend dev int: https://www.youtube.com/watch?v=e_i2RETG0yo&t=305s
+// victor snr fullstack dev int: https://www.youtube.com/watch?v=Y8tlFLIjyMU
+// js snr dev int: https://www.youtube.com/watch?v=8eRVxE9PEF0
+//  nodejs tech int: https://www.youtube.com/watch?v=MpjrjwCWFjM
+// fayzullar nodejs int: https://www.youtube.com/watch?v=jdwwGc5YZ70
+// ReactJs tech int marco: https://www.youtube.com/watch?v=7JG-VwMiTgE
+// rakib reactjs mock int: https://www.youtube.com/watch?v=6qERg1Yt1QQ
