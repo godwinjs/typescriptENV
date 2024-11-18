@@ -8,6 +8,7 @@
 // console.log(`Random Number: ${generateRandomNumber()}`)
 // console.log(`CelciusToFerienhiet: ${celciusToFahrenheit(0)}`)
 
-import getPosts from "./postController.js";
+import getPosts, { getPostLength } from "./postController.js";
 
 console.table(getPosts())
+console.log(getPostLength())
