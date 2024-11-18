@@ -32,7 +32,7 @@ app.listen(port, () => {
 // NodeJs 2hrs: https://www.youtube.com/watch?v=32M1al-Y6Ag
 // ReduxToolkit 1hr: https://www.youtube.com/watch?v=pX0SBJF01EU
 // ReduxToolkit : https://www.youtube.com/watch?v=A8blgpj78kM
-// Typescript 1hr 6m: https://www.youtube.com/watch?v=1F4w31iPX74&pp=ygUTdHlwZXNjcmlwdCBpbiAxaG91cg%3D%3D
+// Typescript 1hr Deeecode 6m: https://www.youtube.com/watch?v=1F4w31iPX74&pp=ygUTdHlwZXNjcmlwdCBpbiAxaG91cg%3D%3D
 // typescript 1hr 2y: https://www.youtube.com/watch?v=d56mG7DezGs&t=177s&pp=ygUTdHlwZXNjcmlwdCBpbiAxaG91cg%3D%3D
 // typescript 4hrs 2ys: https://www.youtube.com/watch?v=30LWjhZzg50&pp=ygUTdHlwZXNjcmlwdCBpbiAxaG91cg%3D%3D
 // mongoDB 1hr 1yr: https://www.youtube.com/watch?v=c2M-rlkkT5o&pp=ygUQbW9uZ29vc2UgaW4gMSBocg%3D%3D
@@ -48,3 +48,5 @@ app.listen(port, () => {
 // fayzullar nodejs int: https://www.youtube.com/watch?v=jdwwGc5YZ70
 // ReactJs tech int marco: https://www.youtube.com/watch?v=7JG-VwMiTgE
 // rakib reactjs mock int: https://www.youtube.com/watch?v=6qERg1Yt1QQ
+// React crash course
+// NodeJs with typescript crashCourse 
