@@ -50,3 +50,11 @@ app.listen(port, () => {
 // rakib reactjs mock int: https://www.youtube.com/watch?v=6qERg1Yt1QQ
 // React crash course
 // NodeJs with typescript crashCourse 
+// Learning Well Tips: https://www.youtube.com/watch?v=okHkUIW46ks
+// Negotiation :https://www.youtube.com/watch?v=BLBRRNwMZNE
+
+
+// https://www.upwork.com/nx/proposals/1857372334878019585
+// https://www.optimusbank.com/
+// https://app.snov.io/login?ref=techcheker
+// 
