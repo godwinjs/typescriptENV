@@ -128,3 +128,119 @@ const user_d: UserWithoutPassword = {
     id: 'dje',
     // password: 'dfeed'
 }
+
+// function highestCombination(numbArr: any){
+//     let highestSum = 0;
+//     let map: any = {}
+//     let maxCombination: any = null;
+
+//     for( let i = 0; i < numbArr.length; i++){
+//         let sum1 = 0, sum2 = 0, curr = numbArr[i], combination: any = null;
+
+//         // first number as current loop item
+//         if(i === 0 ){
+//             sum1 = curr + numbArr[i+1] + numbArr[i+2]
+//             sum2 = curr + numbArr[i+2] + numbArr[i+3]
+//             combination = [ curr ,numbArr[i+1] ,numbArr[i+2] ]
+//             if( sum2 > sum1 ) {
+//                 sum1 = sum2
+//                 combination = [curr ,numbArr[i+2] ,numbArr[i+3]]
+//             }
+//         }
+//         // last item
+//         if( i === numbArr.length - 1 ) {
+//             sum1 = curr + numbArr[i - 1] + numbArr[i - 2]
+//             sum2 = curr + numbArr[i - 2] + numbArr[i - 3]
+//             combination = [ curr ,numbArr[i - 1] ,numbArr[i - 2] ]
+//             if( sum2 > sum1 ) {
+//                 sum1 = sum2
+//                 combination = [curr , numbArr[i - 2] , numbArr[i - 3]]
+//             }
+//         }
+//         // middle items
+//         if(i > 0 && i < numbArr.length - 1) {
+//             sum1 = curr + numbArr[i - 1] + numbArr[i+1]
+//             sum2 = curr + numbArr[i-1] + numbArr[i+2]
+//             combination = [ curr, numbArr[i - 1], numbArr[i+1] ]
+//             if( sum2 > sum1 ) {
+//                 sum1 = sum2
+//                 combination = [curr, numbArr[i-1], numbArr[i+2]]
+//             }
+//         }
+
+//         if(sum1 > highestSum){
+//             highestSum = sum1
+//             maxCombination = combination
+//         }
+//     }
+
+//     return {maxCombination, highestSum}
+// }
+const numbers = [ 1 , 5, 4, 7, 2, 3, 0 ] //6 * 6 = 36 // 154,147,172,123,130  547,572,523,530, ... 0
+
+// 154,157,152,153,150,
+// 147, 142,143,140,
+// 172,173,170,
+// 123,120,
+// 130,
+
+// 547,542,543,540,
+// 572,573,570
+// 523,520
+// 530
+
+function highestCombination(numbArr: number[], combCount: number){
+    let map: any = {};
+    let highestSum = 0;
+    let copyNumbArr = [...numbArr ];
+    let maxCombination: any = null;
+    let combination: number[] = [];
+
+    for( let i = 0; i < numbArr.length; i++ ) {
+        let curr: number = numbArr[i], skip = 0, min = 0;
+
+        if(map[curr] === undefined){
+            // console.log(copyNumbArr, Object.keys(map[curr]).length)
+            combination = Array.from({ length: combCount} , (_, idx) => {
+                return copyNumbArr[idx]
+            });
+            map[curr] = { [`${combination}`]: combination.reduce(( a, b) => a + b, 0) }
+        }
+        
+        // remove the curr item
+        copyNumbArr = [...numbArr ];
+        copyNumbArr.splice(0, copyNumbArr.indexOf(curr) + 1 )
+        // while 1 combination is not yet complete you slide
+        
+        while(Object.keys(map[curr]).length < ( combCount * (copyNumbArr.length - 1) ) - i  ) {
+
+            if(combination[combination.length - 1] === copyNumbArr[copyNumbArr.length - 1]) {
+                min = min + 1
+                skip = 0
+            }
+            combination = [ curr, copyNumbArr[min] ]
+            
+            if(combination.length < combCount ){ //&& !(copyNumbArr[skip+min+1] === undefined)
+                combination.push( copyNumbArr[skip+min+1] )
+            }
+
+            if(map[curr][`${combination}`]){
+                skip = skip + 1;
+            }
+
+            map[curr][`${combination}`] = combination.reduce(( a, b) => a + b, 0)
+            if( map[curr][`${combination}`] > highestSum) {
+                maxCombination = combination//Object.keys(map[curr])
+                highestSum = map[curr][`${combination}`];
+            }
+
+        }
+        
+    }
+    // console.log(map)
+   
+
+    return { maxCombination, highestSum}
+}
+
+console.log(highestCombination(numbers, 3))
