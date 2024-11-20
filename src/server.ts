@@ -57,4 +57,9 @@ app.listen(port, () => {
 // https://www.upwork.com/nx/proposals/1857372334878019585
 // https://www.optimusbank.com/
 // https://app.snov.io/login?ref=techcheker
-// 
+// SpeedTest: https://www.google.com/search?q=internet+speed+test&oq=inte&gs_lcrp=EgZjaHJvbWUqBwgBEAAYjwIyBggAEEUYOTIHCAEQABiPAjIHCAIQABiPAjIHCAMQABiPAjIGCAQQRRg9MgYIBRBFGDwyBggGEEUYPDIGCAcQRRhB0gEIMjk5N2owajeoAgewAgE&sourceid=chrome&ie=UTF-8
+
+// If you have a chatbot that responds with noisy data, how do you make sure it responds with correct output? is there a library you can use to achieve this?
+// How do you work effectly with big data on the client side app, the backend and the database?
+// how do you make sure the file uploaded on the client side if of the right dataset for a chatbot application?
+// how do you make sure a user uploads the right file on your frontend chatbot?
