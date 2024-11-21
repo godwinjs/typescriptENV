@@ -189,7 +189,7 @@ const numbers = [ 1 , 5, 4, 7, 2, 3, 0 ] //6 * 6 = 36 // 154,147,172,123,130  54
 // 523,520
 // 530
 
-function highestCombination(numbArr: number[], combCount: number){
+function maxSubArraySum2(numbArr: number[], combCount: number){
     let map: any = {};
     let highestSum = 0;
     let copyNumbArr = [...numbArr ];
@@ -245,7 +245,7 @@ function highestCombination(numbArr: number[], combCount: number){
 
 // console.log(highestCombination(numbers, 3))
 
-function maxSubArraySum( arr:number[], range:number, maxSum = 0, maxArr: number[] = [], all: any = {}, minSlide: number = 0) {
+function maxSubArraySum1( arr:number[], range:number, maxSum = 0, maxArr: number[] = [], all: any = {}, minSlide: number = 0) {
     let currentSum = 0;
     let maxSlide = arr.length - range;
     
@@ -298,7 +298,7 @@ function maxSubArraySum( arr:number[], range:number, maxSum = 0, maxArr: number[
 
 // maxSubArraySum([1,2,3,4,3,2,1], 3)
 
-function highestSumSubarray(arr: number[], size:number) {
+function highestSumSubarrayAI(arr: number[], size:number) {
     if (size <= 0 || size > arr.length) {
         throw new Error("Invalid size: must be a positive integer less than or equal to the array length.");
     }
@@ -341,7 +341,7 @@ function highestSumSubarray(arr: number[], size:number) {
 // Example usage
 // const input = [1, 2, 1, 4, 3, 2, 3];
 // const size = 3;
-// console.log(highestSumSubarray(input, size)); // Output: [4, 3, 3]
+// console.log(highestSumSubarrayAI(input, size)); // Output: [4, 3, 3]
 // max slideRange arr.length - range and min slide range is 1
 // once arr[i] in second for loop subArrSlide is undefined use currentSum - arr[i - range ] + arr[i - ()]
 
@@ -390,3 +390,37 @@ function allPermutations (items: any[]) {
 // var fruits = [1,2,3];
 // var permutated = allPermutations(fruits);
 // console.log(permutated);
+
+function _maxSubArraySum(arr: number[], size: number ) {
+    let maxSum = 0;
+    let currentSum = 0;
+    let maxCombination = [];
+    
+    const combination = (current: any, remaining: any) => {
+        if (remaining.length === 0) {
+            if (current.length > 0 && current.length === size) {
+
+                currentSum = current.reduce((a, b) => a + b, 0)
+                // maxSum = Math.max(maxSum, currentSum);
+                
+                if(currentSum > maxSum ) {
+                    maxSum = currentSum;
+                    maxCombination = current
+                }
+            }
+
+            return;
+        }
+        
+        combination(current.concat(remaining[0]), remaining.slice(1));
+        combination(current, remaining.slice(1));
+    };
+    
+    combination([], arr);
+    // console.log(result)
+    return {maxCombination, maxSum};
+
+}
+
+console.log( _maxSubArraySum(numbers, 4) )
+// console.log( _maxSubArraySum([1,2,3,4,2,3,1], 4) )
