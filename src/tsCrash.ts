@@ -345,12 +345,12 @@ function highestSumSubarray(arr: number[], size:number) {
 // max slideRange arr.length - range and min slide range is 1
 // once arr[i] in second for loop subArrSlide is undefined use currentSum - arr[i - range ] + arr[i - ()]
 
-function getCombinations(arr: (string | number)[] ) {
+function getCombinations(arr: (string | number)[], size: number ) {
     let result: (string | number)[] = [];
     
     const generate = (current: any, remaining: any) => {
         if (remaining.length === 0) {
-            if (current.length > 0) {
+            if (current.length > 0 && current.length === size) {
                 result.push(current);
             }
             return;
@@ -364,8 +364,8 @@ function getCombinations(arr: (string | number)[] ) {
     return result;
 }
 
-// const items = ["apple", "banana", "cherry", "mango"];
-// const combinations = getCombinations(items);
+// const items = [1,2,3,4];
+// const combinations = getCombinations(items, 3);
 // console.log(combinations);
 
 function allPermutations (items: any[]) {
