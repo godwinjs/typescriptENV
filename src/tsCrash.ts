@@ -392,6 +392,7 @@ function allPermutations (items: any[]) {
 // console.log(permutated);
 
 function _maxSubArraySum(arr: number[], size: number ) {
+    let result: (string | number)[] = [];
     let maxSum = 0;
     let currentSum = 0;
     let maxCombination = [];
@@ -399,6 +400,7 @@ function _maxSubArraySum(arr: number[], size: number ) {
     const combination = (current: any, remaining: any) => {
         if (remaining.length === 0) {
             if (current.length > 0 && current.length === size) {
+                result.push(current);
 
                 currentSum = current.reduce((a, b) => a + b, 0)
                 // maxSum = Math.max(maxSum, currentSum);
@@ -417,10 +419,9 @@ function _maxSubArraySum(arr: number[], size: number ) {
     };
     
     combination([], arr);
-    // console.log(result)
+    console.log(result)
     return {maxCombination, maxSum};
 
 }
 
-console.log( _maxSubArraySum(numbers, 4) )
-// console.log( _maxSubArraySum([1,2,3,4,2,3,1], 4) )
+console.log( _maxSubArraySum([1,2,3,4,2,3,1], 7) )
