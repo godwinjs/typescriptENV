@@ -1,3 +1,5 @@
+import { count } from "console";
+
 // return type string and argument type string
 function print(msg: string): string {
     return msg
@@ -458,6 +460,37 @@ function allCombinations2 (items) {
       }
       return results;
     }
-console.log(allCombinations2([1,2,3]))
+// console.log(allCombinations2([1,2,3]))
 
 // console.log( _maxSubArraySum([1,2,3,4,2,3,1], 3) )
+
+function lowestString(str: string) {
+    const map: any = {}
+    // let maxCount = 0;
+    // let minCharacter = '';
+
+    for (let i = 0; i < str.length; i++ ) {
+        let curr = str[i];
+        map[curr] = map[curr] ? map[curr] + 1 : 1
+        
+        // if(map[curr] > maxCount){
+        //     maxCount = map[curr]
+        //     minCharacter = curr
+        // }
+        // if(map[curr] < maxCount  ){
+        //     if(map[curr] > 1){
+        //         maxCount = map[curr]
+        //     }
+            
+        // }else{
+        //     maxCount = map[curr]
+        // }
+    }
+    const count: number[] = Object.values(map);
+    const minCharacter = Object.keys(map)[count.indexOf(Math.min(...count))]
+
+    return {map, minCharacter}
+    // return {map, minCharacter, maxCount}
+}
+
+console.log(lowestString('jjjjeerrddd'))
