@@ -8,13 +8,13 @@ type _3Foo = {
 const _3a:_3Foo = {
   a: 'BFE.dev',
 }
-a.a = 'bigfrontend.dev'
+_3a.a = 'bigfrontend.dev'
 // OK
 const _3b:MyReadonly<_3Foo> = {
   a: 'BFE.dev'
 }
-b.a = 'bigfrontend.dev'
-// Error
+// _3b.a = 'bigfrontend.dev'
+// // Error
 
 // SOLUTION 
 type MyReadonly<T> = {
