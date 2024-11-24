@@ -101,6 +101,22 @@ interface StorageItem<T, ID, Key = string > {
     data: T;
 }
 
+type foo = {
+    a: string;
+    b: number;
+    c: boolean;
+}
+
+type MyPartail<T> = {
+    a?: string;
+    b?: number;
+    c?: boolean;
+}
+
+const e: MyPartail<foo> = {
+    b: 23
+}
+
 const Item: StorageItem<string, number> = {
     key: "hello",
     id: 2,
@@ -392,15 +408,19 @@ function allPermutations (items: any[]) {
 // console.log(permutated);
 
 function _maxSubArraySum(arr: number[], size: number ) {
-    let result: (string | number)[] = [];
+    // let result: (string | number)[] = [];
     let maxSum = 0;
     let currentSum = 0;
     let maxCombination = [];
+
+    if(size > arr.length){
+        throw new Error('The size of the combination cannot be greater than the numbers provided')
+    }
     
     const combination = (current: any, remaining: any) => {
         if (remaining.length === 0) {
             if (current.length > 0 && current.length === size) {
-                result.push(current);
+                // result.push(current);
 
                 currentSum = current.reduce((a, b) => a + b, 0)
                 // maxSum = Math.max(maxSum, currentSum);
@@ -419,9 +439,25 @@ function _maxSubArraySum(arr: number[], size: number ) {
     };
     
     combination([], arr);
-    console.log(result)
     return {maxCombination, maxSum};
 
 }
 
-console.log( _maxSubArraySum([1,2,3,4,2,3,1], 7) )
+function allCombinations2 (items) {
+    // allcombinations () : return a list of all possible combinations
+     
+      let results: any = [];
+      for (let slots = items.length; slots > 0; slots--) {
+        for (let loop = 0; loop < items.length - slots + 1; loop++) {
+          let key = results.length;
+          results[key] = [];
+          for (let i = loop; i < loop + slots; i++) {
+            results[key].push(items[i]);
+          }
+        }
+      }
+      return results;
+    }
+console.log(allCombinations2([1,2,3]))
+
+// console.log( _maxSubArraySum([1,2,3,4,2,3,1], 3) )
