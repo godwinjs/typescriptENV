@@ -493,4 +493,4 @@ function lowestString(str: string) {
     // return {map, minCharacter, maxCount}
 }
 
-console.log(lowestString('jjjjeerrddd'))
+console.log(lowestString('jjtthhjjeerrdddjjf'))
