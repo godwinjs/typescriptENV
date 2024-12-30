@@ -26,6 +26,7 @@ app.listen(port, () => {
 //     }
 // }
 
+// https://www.youtube.com/watch?v=BP-w99ZINTc&list=PLu0W_9lII9aiS4rUVp2jXwIvCruo27sG6
 // https://www.bing.com/videos/riverview/relatedvideo?q=decorators%20in%20typescript&mid=73D1F5A40CEF35F9EA6A73D1F5A40CEF35F9EA6A&ajaxhist=0
 // GraphQL 4hrs: https://www.youtube.com/watch?v=yqWzCV0kU_c
 // NextJs15 1hrs: https://www.youtube.com/watch?v=_EgI9WH8q1A
