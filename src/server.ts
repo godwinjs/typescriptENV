@@ -62,6 +62,6 @@ app.listen(port, () => {
 
 // If you have a chatbot that responds with noisy data, how do you make sure it responds with correct output? is there a library you can use to achieve this?
 // How do you work effectly with big data on the client side app, the backend and the database?
-// how do you make sure the file uploaded on the client side if of the right dataset for a chatbot application?
+// how do you make sure the file uploaded on the client side is of the right dataset for a chatbot application?
 // how do you make sure a user uploads the right file on your frontend chatbot?
 // are there libraries or tools that can be utilized reduces hullicination in llms?
